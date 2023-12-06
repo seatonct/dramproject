@@ -1,0 +1,191 @@
+[
+  {
+    "model": "dramapi.color",
+    "pk": 1,
+    "fields": {
+      "label": "gin clear",
+      "color_grade": 0.0,
+      "hex_code": "FFFFFF"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 2,
+    "fields": {
+      "label": "white wine",
+      "color_grade": 0.1,
+      "hex_code": "FFFEDC"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 3,
+    "fields": {
+      "label": "pale straw",
+      "color_grade": 0.2,
+      "hex_code": "FEEE98"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 4,
+    "fields": {
+      "label": "pale gold",
+      "color_grade": 0.3,
+      "hex_code": "FAEA77"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 5,
+    "fields": {
+      "label": "jonquil, ripe corn",
+      "color_grade": 0.4,
+      "hex_code": "FBE166"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 6,
+    "fields": {
+      "label": "yellow gold",
+      "color_grade": 0.5,
+      "hex_code": "F8DC55"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 7,
+    "fields": {
+      "label": "old gold",
+      "color_grade": 0.6,
+      "hex_code": "F8D948"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 8,
+    "fields": {
+      "label": "amber",
+      "color_grade": 0.7,
+      "hex_code": "F7CF49"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 9,
+    "fields": {
+      "label": "deep gold",
+      "color_grade": 0.8,
+      "hex_code": "F5C94D"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 10,
+    "fields": {
+      "label": "amontillado sherry",
+      "color_grade": 0.9,
+      "hex_code": "F7C23B"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 11,
+    "fields": {
+      "label": "deep copper",
+      "color_grade": 1.0,
+      "hex_code": "F4BD33"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 12,
+    "fields": {
+      "label": "burnished",
+      "color_grade": 1.1,
+      "hex_code": "ECAD06"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 13,
+    "fields": {
+      "label": "chestnut, oloroso sherry",
+      "color_grade": 1.2,
+      "hex_code": "E79E12"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 14,
+    "fields": {
+      "label": "russet, muscat",
+      "color_grade": 1.3,
+      "hex_code": "E69500"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 15,
+    "fields": {
+      "label": "tawny",
+      "color_grade": 1.4,
+      "hex_code": "DD7315"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 16,
+    "fields": {
+      "label": "auburn, polished mahogany",
+      "color_grade": 1.5,
+      "hex_code": "E26529"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 17,
+    "fields": {
+      "label": "mahogany, henna notes",
+      "color_grade": 1.6,
+      "hex_code": "CC502E"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 18,
+    "fields": {
+      "label": "burnt umber",
+      "color_grade": 1.7,
+      "hex_code": "AE3029"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 19,
+    "fields": {
+      "label": "old oak",
+      "color_grade": 1.8,
+      "hex_code": "9F221D"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 20,
+    "fields": {
+      "label": "brown sherry",
+      "color_grade": 1.9,
+      "hex_code": "732D1D"
+    }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 21,
+    "fields": {
+      "label": "treacle",
+      "color_grade": 2.0,
+      "hex_code": "421D0B"
+    }
+  }
+]
