@@ -1,0 +1,50 @@
+[
+  {
+    "model": "dramapi.rating",
+    "pk": 1,
+    "fields": {
+      "number_rating": 0,
+      "label": "very bad"
+    }
+  },
+  {
+    "model": "dramapi.rating",
+    "pk": 2,
+    "fields": {
+      "number_rating": 1,
+      "label": "bad"
+    }
+  },
+  {
+    "model": "dramapi.rating",
+    "pk": 3,
+    "fields": {
+      "number_rating": 2,
+      "label": "okay"
+    }
+  },
+  {
+    "model": "dramapi.rating",
+    "pk": 4,
+    "fields": {
+      "number_rating": 3,
+      "label": "good"
+    }
+  },
+  {
+    "model": "dramapi.rating",
+    "pk": 5,
+    "fields": {
+      "number_rating": 4,
+      "label": "very good"
+    }
+  },
+  {
+    "model": "dramapi.rating",
+    "pk": 6,
+    "fields": {
+      "number_rating": 5,
+      "label": "superior"
+    }
+  }
+]

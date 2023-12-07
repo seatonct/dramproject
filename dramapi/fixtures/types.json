@@ -1,0 +1,72 @@
+[
+  {
+    "model": "dramapi.type",
+    "pk": 1,
+    "fields": {
+      "label": "Blended"
+    }
+  },
+  {
+    "model": "dramapi.type",
+    "pk": 2,
+    "fields": {
+      "label": "Blended Malt"
+    }
+  },
+  {
+    "model": "dramapi.type",
+    "pk": 3,
+    "fields": {
+      "label": "Bourbon"
+    }
+  },
+  {
+    "model": "dramapi.type",
+    "pk": 4,
+    "fields": {
+      "label": "Corn Whiskey"
+    }
+  },
+  {
+    "model": "dramapi.type",
+    "pk": 5,
+    "fields": {
+      "label": "Rye"
+    }
+  },
+  {
+    "model": "dramapi.type",
+    "pk": 6,
+    "fields": {
+      "label": "Single Grain"
+    }
+  },
+  {
+    "model": "dramapi.type",
+    "pk": 7,
+    "fields": {
+      "label": "Single Malt"
+    }
+  },
+  {
+    "model": "dramapi.type",
+    "pk": 8,
+    "fields": {
+      "label": "Single Pot Still"
+    }
+  },
+  {
+    "model": "dramapi.type",
+    "pk": 9,
+    "fields": {
+      "label": "Tennessee Whiskey"
+    }
+  },
+  {
+    "model": "dramapi.type",
+    "pk": 10,
+    "fields": {
+      "label": "Wheat Whiskey"
+    }
+  }
+]
