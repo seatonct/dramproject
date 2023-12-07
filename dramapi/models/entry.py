@@ -6,7 +6,7 @@ class Entry(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='user_entry')
     whiskey = models.CharField(max_length=155)
-    type = models.ForeignKey(
+    whiskey_type = models.ForeignKey(
         "Type", on_delete=models.CASCADE, related_name='entry_type')
     country = models.CharField(max_length=155)
     part_of_country = models.CharField(max_length=155)
