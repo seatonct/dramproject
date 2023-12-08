@@ -6,6 +6,7 @@ from dramapi.models import Entry, Type, Color, Rating
 from .types import TypeSerializer
 from .colors import ColorSerializer
 from .ratings import RatingSerializer
+from rest_framework.authtoken.models import Token
 
 
 class EntryAuthorSerializer(serializers.ModelSerializer):
@@ -39,12 +40,14 @@ class EntrySerializer (serializers.ModelSerializer):
 class EntryViewSet(viewsets.ViewSet):
 
     def list(self, request):
-        requester_id = request.query_params.get('user_id')
+        requester_id = request.query_params.get('userId')
 
-        if requester_id is not None:
-            entries = Entry.objects.filter("user_id" == requester_id).all()
-        else:
-            entries = Entry.objects.all()
+        entries = Entry.objects.all()
+
+        if requester_id:
+            entries = entries.filter(
+                user_id=requester_id)
+
         serializer = EntrySerializer(
             entries, many=True, context={'request': request})
         return Response(serializer.data)
