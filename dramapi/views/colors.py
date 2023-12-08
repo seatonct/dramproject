@@ -7,7 +7,7 @@ from dramapi.models import Color
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Color
-        fields = ['id', 'label', 'color_grade', 'hex_code']
+        fields = ['id', 'label', 'color_grade', 'hex_code', 'tailwind_name']
 
 
 class ColorViewSet(viewsets.ViewSet):

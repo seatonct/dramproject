@@ -5,7 +5,8 @@
     "fields": {
       "label": "gin clear",
       "color_grade": 0.0,
-      "hex_code": "FFFFFF"
+      "hex_code": "FFFFFF",
+      "tailwind_name": "gin-clear"
     }
   },
   {
@@ -14,7 +15,8 @@
     "fields": {
       "label": "white wine",
       "color_grade": 0.1,
-      "hex_code": "FFFEDC"
+      "hex_code": "FFFEDC",
+      "tailwind_name": "white-wine"
     }
   },
   {
@@ -23,7 +25,8 @@
     "fields": {
       "label": "pale straw",
       "color_grade": 0.2,
-      "hex_code": "FEEE98"
+      "hex_code": "FEEE98",
+      "tailwind_name": "pale-straw"
     }
   },
   {
@@ -32,7 +35,8 @@
     "fields": {
       "label": "pale gold",
       "color_grade": 0.3,
-      "hex_code": "FAEA77"
+      "hex_code": "FAEA77",
+      "tailwind_name": "pale-gold"
     }
   },
   {
@@ -41,7 +45,8 @@
     "fields": {
       "label": "jonquil, ripe corn",
       "color_grade": 0.4,
-      "hex_code": "FBE166"
+      "hex_code": "FBE166",
+      "tailwind_name": "jonquil-ripe-corn"
     }
   },
   {
@@ -50,7 +55,8 @@
     "fields": {
       "label": "yellow gold",
       "color_grade": 0.5,
-      "hex_code": "F8DC55"
+      "hex_code": "F8DC55",
+      "tailwind_name": "yellow-gold"
     }
   },
   {
@@ -59,7 +65,8 @@
     "fields": {
       "label": "old gold",
       "color_grade": 0.6,
-      "hex_code": "F8D948"
+      "hex_code": "F8D948",
+      "tailwind_name": "old-gold"
     }
   },
   {
@@ -68,7 +75,8 @@
     "fields": {
       "label": "amber",
       "color_grade": 0.7,
-      "hex_code": "F7CF49"
+      "hex_code": "F7CF49",
+      "tailwind_name": "amber-whiskey"
     }
   },
   {
@@ -77,7 +85,8 @@
     "fields": {
       "label": "deep gold",
       "color_grade": 0.8,
-      "hex_code": "F5C94D"
+      "hex_code": "F5C94D",
+      "tailwind_name": "deep-gold"
     }
   },
   {
@@ -86,7 +95,8 @@
     "fields": {
       "label": "amontillado sherry",
       "color_grade": 0.9,
-      "hex_code": "F7C23B"
+      "hex_code": "F7C23B",
+      "tailwind_name": "amontillado-sherry"
     }
   },
   {
@@ -95,7 +105,8 @@
     "fields": {
       "label": "deep copper",
       "color_grade": 1.0,
-      "hex_code": "F4BD33"
+      "hex_code": "F4BD33",
+      "tailwind_name": "deep-copper"
     }
   },
   {
@@ -104,7 +115,8 @@
     "fields": {
       "label": "burnished",
       "color_grade": 1.1,
-      "hex_code": "ECAD06"
+      "hex_code": "ECAD06",
+      "tailwind_name": "burnished-whiskey"
     }
   },
   {
@@ -113,7 +125,8 @@
     "fields": {
       "label": "chestnut, oloroso sherry",
       "color_grade": 1.2,
-      "hex_code": "E79E12"
+      "hex_code": "E79E12",
+      "tailwind_name": "chestnut-oloroso-sherry"
     }
   },
   {
@@ -122,7 +135,8 @@
     "fields": {
       "label": "russet, muscat",
       "color_grade": 1.3,
-      "hex_code": "E69500"
+      "hex_code": "E69500",
+      "tailwind_name": "russet-muscat"
     }
   },
   {
@@ -131,7 +145,8 @@
     "fields": {
       "label": "tawny",
       "color_grade": 1.4,
-      "hex_code": "DD7315"
+      "hex_code": "DD7315",
+      "tailwind_name": "tawny-whiskey"
     }
   },
   {
@@ -140,7 +155,8 @@
     "fields": {
       "label": "auburn, polished mahogany",
       "color_grade": 1.5,
-      "hex_code": "E26529"
+      "hex_code": "E26529",
+      "tailwind_name": "auburn-polished-mahogany"
     }
   },
   {
@@ -149,7 +165,8 @@
     "fields": {
       "label": "mahogany, henna notes",
       "color_grade": 1.6,
-      "hex_code": "CC502E"
+      "hex_code": "CC502E",
+      "tailwind_name": "mahogany-henna-notes"
     }
   },
   {
@@ -158,7 +175,8 @@
     "fields": {
       "label": "burnt umber",
       "color_grade": 1.7,
-      "hex_code": "AE3029"
+      "hex_code": "AE3029",
+      "tailwind_name": "burnt-umber"
     }
   },
   {
@@ -167,7 +185,8 @@
     "fields": {
       "label": "old oak",
       "color_grade": 1.8,
-      "hex_code": "9F221D"
+      "hex_code": "9F221D",
+      "tailwind_name": "old-oak"
     }
   },
   {
@@ -176,7 +195,8 @@
     "fields": {
       "label": "brown sherry",
       "color_grade": 1.9,
-      "hex_code": "732D1D"
+      "hex_code": "732D1D",
+      "tailwind_name": "brown-sherry"
     }
   },
   {
@@ -185,7 +205,8 @@
     "fields": {
       "label": "treacle",
       "color_grade": 2.0,
-      "hex_code": "421D0B"
+      "hex_code": "421D0B",
+      "tailwind_name": "treacle-whiskey"
     }
   }
 ]
