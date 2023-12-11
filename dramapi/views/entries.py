@@ -6,7 +6,6 @@ from dramapi.models import Entry, Type, Color, Rating
 from .types import TypeSerializer
 from .colors import ColorSerializer
 from .ratings import RatingSerializer
-from rest_framework.authtoken.models import Token
 
 
 class EntryAuthorSerializer(serializers.ModelSerializer):
