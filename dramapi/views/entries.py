@@ -2,6 +2,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
 from dramapi.models import Entry, Type, Color, Rating
 from .types import TypeSerializer
 from .colors import ColorSerializer
@@ -39,13 +40,17 @@ class EntrySerializer (serializers.ModelSerializer):
 class EntryViewSet(viewsets.ViewSet):
 
     def list(self, request):
-        requester_id = request.query_params.get('userId')
+        username = request.query_params.get('username')
 
         entries = Entry.objects.all()
 
-        if requester_id:
+        if username:
+            try:
+                user = User.objects.get(username=username)
+            except User.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
             entries = entries.filter(
-                user_id=requester_id)
+                user=user)
 
         serializer = EntrySerializer(
             entries, many=True, context={'request': request})
