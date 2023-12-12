@@ -3,7 +3,6 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
@@ -11,7 +10,8 @@ from django.contrib.auth import authenticate
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'username','password','email','date_joined']
+        fields = ['id', 'first_name', 'last_name',
+                  'username', 'password', 'email', 'date_joined']
         extra_kwargs = {'password': {'write_only': True}}
 
 
@@ -40,7 +40,8 @@ class UserViewSet(viewsets.ViewSet):
         username = request.data.get('username')
         password = request.data.get('password')
 
-        user = authenticate(request=request, username=username, password=password)
+        user = authenticate(
+            request=request, username=username, password=password)
 
         if user:
             token = Token.objects.get(user=user)
