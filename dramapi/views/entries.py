@@ -105,6 +105,39 @@ class EntryViewSet(viewsets.ViewSet):
         except Exception:
             return Response(None, status=status.HTTP_400_BAD_REQUEST)
 
+    def update(self, request, pk=None):
+        try:
+            entry = Entry.objects.get(pk=pk)
+            self.check_object_permissions(request, entry)
+
+            serializer = EntrySerializer(data=request.data)
+
+            if serializer.is_valid():
+                entry.user = request.auth.user
+                entry.whiskey = serializer.validated_data['whiskey']
+                entry.whiskey_type = Type.objects.get(
+                    pk=request.data['type_id'])
+                entry.country = serializer.validated_data['country']
+                entry.part_of_country = serializer.validated_data['part_of_country']
+                entry.age_in_years = serializer.validated_data['age_in_years']
+                entry.proof = serializer.validated_data['proof']
+                entry.color = Color.objects.get(pk=request.data['color_id'])
+                entry.mash_bill = serializer.validated_data['mash_bill']
+                entry.maturation_details = serializer.validated_data['maturation_details']
+                entry.nose = serializer.validated_data['nose']
+                entry.palate = serializer.validated_data['palate']
+                entry.finish = serializer.validated_data['finish']
+                entry.rating = Rating.objects.get(pk=request.data['rating_id'])
+                entry.notes = serializer.validated_data['notes']
+                entry.save()
+
+                serializer = EntrySerializer(
+                    entry, context={'request': request})
+                return Response(None, status.HTTP_202_ACCEPTED)
+
+        except Entry.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
     def destroy(self, request, pk=None):
         try:
             entry = Entry.objects.get(pk=pk)
