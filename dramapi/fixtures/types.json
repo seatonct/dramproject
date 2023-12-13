@@ -68,5 +68,12 @@
     "fields": {
       "label": "Wheat Whiskey"
     }
+  },
+  {
+    "model": "dramapi.type",
+    "pk": 11,
+    "fields": {
+      "label": "Other"
+    }
   }
 ]

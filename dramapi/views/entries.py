@@ -2,7 +2,6 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
 from dramapi.models import Entry, Type, Color, Rating
 from .types import TypeSerializer
 from .colors import ColorSerializer
@@ -72,7 +71,7 @@ class EntryViewSet(viewsets.ViewSet):
         part_of_country = request.data.get('part_of_country')
         age_in_years = request.data.get('age_in_years')
         proof = request.data.get('proof')
-        color = Color.objects.get(pk=request.data["color_id"])
+        color = Color.objects.get(pk=request.data['color_id'])
         mash_bill = request.data.get('mash_bill')
         maturation_details = request.data.get('maturation_details')
         nose = request.data.get('nose')
@@ -105,3 +104,17 @@ class EntryViewSet(viewsets.ViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception:
             return Response(None, status=status.HTTP_400_BAD_REQUEST)
+
+    def destroy(self, request, pk=None):
+        try:
+            entry = Entry.objects.get(pk=pk)
+
+            if entry.user_id != request.user.id:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+
+            entry.delete()
+
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        except Entry.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)

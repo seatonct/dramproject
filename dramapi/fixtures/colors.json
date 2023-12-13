@@ -208,5 +208,15 @@
       "hex_code": "421D0B",
       "tailwind_name": "treacle-whiskey"
     }
+  },
+  {
+    "model": "dramapi.color",
+    "pk": 22,
+    "fields": {
+      "label": "no selection",
+      "color_grade": 5.0,
+      "hex_code": "******",
+      "tailwind_name": "no-selection"
+    }
   }
 ]
