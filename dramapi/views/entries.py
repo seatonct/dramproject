@@ -48,6 +48,7 @@ class EntryViewSet(viewsets.ViewSet):
 
     def list(self, request):
         username = request.query_params.get('username')
+        bookmarkUser = request.query_params.get('bookmarkUser')
 
         entries = Entry.objects.all()
 
@@ -58,6 +59,13 @@ class EntryViewSet(viewsets.ViewSet):
                 return Response(status=status.HTTP_404_NOT_FOUND)
             entries = entries.filter(
                 user=user)
+
+        if bookmarkUser:
+            try:
+                user = User.objects.get(pk=bookmarkUser)
+            except User.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+            entries = entries.filter(user=user)
 
         serializer = EntrySerializer(
             entries, many=True, context={'request': request})

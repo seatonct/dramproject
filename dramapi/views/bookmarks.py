@@ -1,6 +1,7 @@
 from rest_framework import viewsets, status, serializers, permissions
 from rest_framework.response import Response
 from dramapi.models import Entry, Bookmark
+from django.contrib.auth.models import User
 
 
 class BookmarkSerializer(serializers.ModelSerializer):
@@ -20,8 +21,18 @@ class BookmarkViewSet(viewsets.ViewSet):
     permission_classes = [permissions.AllowAny]
 
     def list(self, request):
+        username = request.query_params.get('username')
         # Get all bookmarks
         bookmarks = Bookmark.objects.all()
+
+        if username:
+            try:
+                user = User.objects.get(username=username)
+            except User.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+            bookmarks = bookmarks.filter(
+                user=user)
+
         # Serialize the objects, and pass request to determine owner
         serializer = BookmarkSerializer(
             bookmarks, many=True, context={'request': request})
