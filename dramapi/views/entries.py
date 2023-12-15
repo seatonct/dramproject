@@ -36,6 +36,14 @@ class EntrySerializer (serializers.ModelSerializer):
                   'mash_bill', 'maturation_details', 'nose', 'palate', 'finish', 'rating', 'notes', 'publication_date', 'user']
 
 
+class UpdateEntrySerializer (serializers.ModelSerializer):
+
+    class Meta:
+        model = Entry
+        fields = ['whiskey', 'whiskey_type', 'country', 'part_of_country', 'age_in_years', 'proof', 'color',
+                  'mash_bill', 'maturation_details', 'nose', 'palate', 'finish', 'rating', 'notes']
+
+
 class EntryViewSet(viewsets.ViewSet):
 
     def list(self, request):
@@ -66,7 +74,7 @@ class EntryViewSet(viewsets.ViewSet):
 
     def create(self, request):
         whiskey = request.data.get('whiskey')
-        whiskey_type = Type.objects.get(pk=request.data["type_id"])
+        whiskey_type = Type.objects.get(pk=request.data['type_id'])
         country = request.data.get('country')
         part_of_country = request.data.get('part_of_country')
         age_in_years = request.data.get('age_in_years')
@@ -77,7 +85,7 @@ class EntryViewSet(viewsets.ViewSet):
         nose = request.data.get('nose')
         palate = request.data.get('palate')
         finish = request.data.get('finish')
-        rating = Rating.objects.get(pk=request.data["rating_id"])
+        rating = Rating.objects.get(pk=request.data['rating_id'])
         notes = request.data.get('notes')
 
         entry = Entry.objects.create(
@@ -104,6 +112,40 @@ class EntryViewSet(viewsets.ViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception:
             return Response(None, status=status.HTTP_400_BAD_REQUEST)
+
+    def update(self, request, pk=None):
+        try:
+            entry = Entry.objects.get(pk=pk)
+            self.check_object_permissions(request, entry)
+            serializer = UpdateEntrySerializer(data=request.data)
+
+            if serializer.is_valid():
+                entry.whiskey = serializer.validated_data['whiskey']
+                entry.whiskey_type = Type.objects.get(
+                    pk=request.data['whiskey_type'])
+                entry.country = serializer.validated_data['country']
+                entry.part_of_country = serializer.validated_data['part_of_country']
+                entry.age_in_years = serializer.validated_data['age_in_years']
+                entry.proof = serializer.validated_data['proof']
+                entry.color = Color.objects.get(pk=request.data['color_id'])
+                entry.mash_bill = serializer.validated_data['mash_bill']
+                entry.maturation_details = serializer.validated_data['maturation_details']
+                entry.nose = serializer.validated_data['nose']
+                entry.palate = serializer.validated_data['palate']
+                entry.finish = serializer.validated_data['finish']
+                entry.rating = Rating.objects.get(
+                    pk=request.data['rating'])
+                entry.notes = serializer.validated_data['notes']
+                entry.save()
+
+                serializer = UpdateEntrySerializer(
+                    entry, context={'request': request})
+                return Response(None, status.HTTP_202_ACCEPTED)
+
+            return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
+
+        except Entry.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
     def destroy(self, request, pk=None):
         try:
