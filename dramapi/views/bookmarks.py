@@ -2,6 +2,7 @@ from rest_framework import viewsets, status, serializers, permissions
 from rest_framework.response import Response
 from dramapi.models import Entry, Bookmark
 from django.contrib.auth.models import User
+from .entries import EntrySerializer
 
 
 class BookmarkSerializer(serializers.ModelSerializer):
@@ -17,11 +18,25 @@ class BookmarkSerializer(serializers.ModelSerializer):
         return self.context['request'].user == obj.user
 
 
+class MyBookmarksSerializer(serializers.ModelSerializer):
+    entry = EntrySerializer(many=False)
+    is_owner = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Bookmark
+        fields = ['id', 'entry', 'user', 'is_owner']
+        read_only_fields = ['user']
+
+    def get_is_owner(self, obj):
+        return self.context['request'].user == obj.user
+
+
 class BookmarkViewSet(viewsets.ViewSet):
     permission_classes = [permissions.AllowAny]
 
     def list(self, request):
         username = request.query_params.get('username')
+        expansion = request.query_params.get('expand')
         # Get all bookmarks
         bookmarks = Bookmark.objects.all()
 
@@ -33,9 +48,13 @@ class BookmarkViewSet(viewsets.ViewSet):
             bookmarks = bookmarks.filter(
                 user=user)
 
-        # Serialize the objects, and pass request to determine owner
-        serializer = BookmarkSerializer(
-            bookmarks, many=True, context={'request': request})
+        if expansion == 'entry':
+            serializer = MyBookmarksSerializer(
+                bookmarks, many=True, context={'request': request})
+        else:
+            # Serialize the objects, and pass request to determine owner
+            serializer = BookmarkSerializer(
+                bookmarks, many=True, context={'request': request})
 
         # Return the serialized data with 200 status code
         return Response(serializer.data, status=status.HTTP_200_OK)
