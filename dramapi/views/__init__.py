@@ -4,3 +4,4 @@ from .colors import ColorViewSet
 from .ratings import RatingViewSet
 from .entries import EntryViewSet
 from .current_user import CurrentUserView
+from .bookmarks import BookmarkViewSet

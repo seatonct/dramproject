@@ -1,13 +1,14 @@
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from dramapi.views import CurrentUserView, UserViewSet, TypeViewSet, ColorViewSet, RatingViewSet, EntryViewSet
+from dramapi.views import CurrentUserView, UserViewSet, TypeViewSet, ColorViewSet, RatingViewSet, EntryViewSet, BookmarkViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'types', TypeViewSet, 'type')
 router.register(r'colors', ColorViewSet, 'color')
 router.register(r'ratings', RatingViewSet, 'rating')
 router.register(r'entries', EntryViewSet, 'entry')
+router.register(r'bookmarks', BookmarkViewSet, 'bookmark')
 
 urlpatterns = [
     path('', include(router.urls)),

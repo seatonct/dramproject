@@ -2,10 +2,11 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from dramapi.models import Entry, Type, Color, Rating
+from dramapi.models import Entry, Type, Color, Rating, Bookmark
 from .types import TypeSerializer
 from .colors import ColorSerializer
 from .ratings import RatingSerializer
+from operator import itemgetter
 
 
 class EntryAuthorSerializer(serializers.ModelSerializer):
@@ -48,6 +49,7 @@ class EntryViewSet(viewsets.ViewSet):
 
     def list(self, request):
         username = request.query_params.get('username')
+        # bookmark_user = int(request.query_params.get('bookmarkUser'))
 
         entries = Entry.objects.all()
 
@@ -58,6 +60,18 @@ class EntryViewSet(viewsets.ViewSet):
                 return Response(status=status.HTTP_404_NOT_FOUND)
             entries = entries.filter(
                 user=user)
+
+        # if bookmark_user is not None:
+        #     bookmarks = Bookmark.objects.all()
+        #     bookmarks = bookmarks.filter(user=bookmark_user)
+
+        #     # try:
+        #     #     user = User.objects.get(id=bookmarkUser)
+        #     # except User.DoesNotExist:
+        #     #     return Response(status=status.HTTP_404_NOT_FOUND)
+
+        #     filter_values = list(map(itemgetter('entry'), bookmarks))
+        #     entries = [obj for obj in entries if obj.id in filter_values]
 
         serializer = EntrySerializer(
             entries, many=True, context={'request': request})
