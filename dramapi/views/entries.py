@@ -50,7 +50,7 @@ class EntryViewSet(viewsets.ViewSet):
         username = request.query_params.get('username')
         # bookmark_user = int(request.query_params.get('bookmarkUser'))
 
-        entries = Entry.objects.all()
+        entries = Entry.objects.all().order_by('-publication_date')
 
         if username:
             try:

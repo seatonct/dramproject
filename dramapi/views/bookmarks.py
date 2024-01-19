@@ -38,7 +38,7 @@ class BookmarkViewSet(viewsets.ViewSet):
         username = request.query_params.get('username')
         expansion = request.query_params.get('expand')
         # Get all bookmarks
-        bookmarks = Bookmark.objects.all()
+        bookmarks = Bookmark.objects.all().order_by('-id')
 
         if username:
             try:
