@@ -1,7 +1,7 @@
 from rest_framework import viewsets, status, serializers, permissions
 from rest_framework.response import Response
-from dramapi.models import Entry, Bookmark
 from django.contrib.auth.models import User
+from dramapi.models import Entry, Bookmark
 from .entries import EntrySerializer
 
 
