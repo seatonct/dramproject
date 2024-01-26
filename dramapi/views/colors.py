@@ -5,9 +5,9 @@ from dramapi.models import Color
 
 
 class ColorSerializer(serializers.ModelSerializer):
-    '''Serializer for Bookmark model
+    '''Serializer for Color model
 
-    Attribute:
+    Attributes:
         id (int): primary key for the Color
         label (str): name/description of the Color
         color_grade (float): rating in range 0.0-2.0

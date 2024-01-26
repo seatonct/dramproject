@@ -8,7 +8,7 @@ from .entries import EntrySerializer
 class BookmarkSerializer(serializers.ModelSerializer):
     '''Serializer for Bookmark model
 
-    Attribute:
+    Attributes:
         id (int): primary key for the Bookmark
         entry (int): primary key of related Entry
         user (int): primary key of related User, the owner of the Bookmark
@@ -37,7 +37,7 @@ class BookmarkSerializer(serializers.ModelSerializer):
 class MyBookmarksSerializer(serializers.ModelSerializer):
     '''Serializer for Bookmark model that includes 'entry' field.
 
-    Attribute:
+    Attributes:
         id (int): primary key for the Bookmark
         entry (dict): all data included in the related Entry
         user (int): primary key of related User, the owner of the Bookmark
