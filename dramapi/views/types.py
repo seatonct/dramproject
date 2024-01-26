@@ -19,8 +19,8 @@ class TypeViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, pk=None):
         try:
-            type = Type.objects.get(pk=pk)
-            serializer = TypeSerializer(type)
+            whiskey_type = Type.objects.get(pk=pk)
+            serializer = TypeSerializer(whiskey_type)
             return Response(serializer.data)
         except Type.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
@@ -35,11 +35,11 @@ class TypeViewSet(viewsets.ViewSet):
 
     def destroy(self, request, pk=None):
         try:
-            type = Type.objects.get(pk=pk)
+            whiskey_type = Type.objects.get(pk=pk)
 
-            self.check_object_permissions(request, type)
+            self.check_object_permissions(request, whiskey_type)
 
-            type.delete()
+            whiskey_type.delete()
 
             return Response(status=status.HTTP_204_NO_CONTENT)
 
