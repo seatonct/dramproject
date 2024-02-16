@@ -8,8 +8,10 @@ from .colors import ColorSerializer
 from .ratings import RatingSerializer
 
 
-# Serializer for retrieving entry author's information:
 class EntryAuthorSerializer(serializers.ModelSerializer):
+    # Serializer for retrieving entry author's information.
+
+    # Set up ad hoc field for the post author.
     author_name = serializers.SerializerMethodField()
 
     def get_author_name(self, obj):
@@ -26,14 +28,19 @@ class EntryAuthorSerializer(serializers.ModelSerializer):
         model = User
         fields = ['author_name', 'username']
 
-# Serializer for the Entry model.
-
 
 class EntrySerializer (serializers.ModelSerializer):
+    # Serializer for the Entry model.
+
+    # Check whether the request user is the owner of the entry.
     is_owner = serializers.SerializerMethodField()
+    # Get the whiskey's type data.
     whiskey_type = TypeSerializer(many=False)
+    # Get the whiskey's color data.
     color = ColorSerializer(many=False)
+    # Get the whiskey's rating data.
     rating = RatingSerializer(many=False)
+    # Get the entry's author data.
     user = EntryAuthorSerializer(many=False)
 
     def get_is_owner(self, obj):
@@ -51,20 +58,18 @@ class EntrySerializer (serializers.ModelSerializer):
         fields = ['id', 'is_owner', 'user_id', 'whiskey', 'whiskey_type', 'country', 'part_of_country', 'age_in_years', 'proof', 'color',
                   'mash_bill', 'maturation_details', 'nose', 'palate', 'finish', 'rating', 'notes', 'publication_date', 'user']
 
-# Serializer for updating an Entry instance.
-
 
 class UpdateEntrySerializer (serializers.ModelSerializer):
+    # Serializer for updating an Entry instance.
 
     class Meta:
         model = Entry
         fields = ['whiskey', 'whiskey_type', 'country', 'part_of_country', 'age_in_years', 'proof', 'color',
                   'mash_bill', 'maturation_details', 'nose', 'palate', 'finish', 'rating', 'notes']
 
-# ViewSet for handling Entry related operations.
-
 
 class EntryViewSet(viewsets.ViewSet):
+    # ViewSet for handling Entry related operations.
 
     def list(self, request):
         '''Retrieve a list of entries.
@@ -75,15 +80,20 @@ class EntryViewSet(viewsets.ViewSet):
 
             Returns: list of objects
         '''
+        # If a username is included in the query params, get it.
         username = request.query_params.get('username')
-
+        # Get all entries ordered in reverse by publication date.
         entries = Entry.objects.all().order_by('-publication_date')
 
+        # If a username is included in the query params,
+        # filter entries to include only those by the user with that username.
         if username:
+            # Find the user who matches the username.
             try:
                 user = User.objects.get(username=username)
             except User.DoesNotExist:
                 return Response(status=status.HTTP_404_NOT_FOUND)
+            # Filter entries for that user.
             entries = entries.filter(
                 user=user)
 
@@ -101,6 +111,7 @@ class EntryViewSet(viewsets.ViewSet):
 
             Returns: obj
         '''
+        # Find and return the entry with the specified pk.
         try:
             entry = Entry.objects.get(pk=pk)
             serializer = EntrySerializer(
@@ -174,8 +185,11 @@ class EntryViewSet(viewsets.ViewSet):
             Returns: no content
         '''
         try:
+            # Find the entry with the specified pk.
             entry = Entry.objects.get(pk=pk)
+            # Check whether requester has permission to update entry.
             self.check_object_permissions(request, entry)
+            # Create a serializer instance.
             serializer = UpdateEntrySerializer(data=request.data)
 
             if serializer.is_valid():
@@ -198,8 +212,10 @@ class EntryViewSet(viewsets.ViewSet):
                 entry.notes = serializer.validated_data['notes']
                 entry.save()
 
+                # Update the serializer instance with the updated entry data.
                 serializer = UpdateEntrySerializer(
                     entry, context={'request': request})
+
                 return Response(None, status.HTTP_202_ACCEPTED)
 
             return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
@@ -218,7 +234,9 @@ class EntryViewSet(viewsets.ViewSet):
 
             Returns: no content
         '''
+
         try:
+            # Find the entry with the specified pk.
             entry = Entry.objects.get(pk=pk)
 
             # Check whether the request user is the owner of the entry.
